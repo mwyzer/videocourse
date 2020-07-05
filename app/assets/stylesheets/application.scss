@@ -14,9 +14,9 @@
  *= require_self
  */
 
- @import "bootstrap";
- // body { background: #f8f0e6; }
+@import "bootstrap";
+body { background: #f8f0e6; }
 
- @import "font-awesome-sprockets";
- @import "font-awesome";
- @import "./actiontext.scss";
+@import "font-awesome-sprockets";
+@import "font-awesome";
+@import "./actiontext.scss";

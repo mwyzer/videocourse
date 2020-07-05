@@ -1,14 +1,63 @@
+.jumbotron 
+  .display-4
+    What do you want to learn today?
+  .p-4
 
+  .form-inline.my-2.my-lg-0
+    = form_tag(courses_path, method: :get) do
+      .input-group
+        = text_field_tag :title, params[:title], autocomplete: 'off', placeholder: "Find a course", class: 'form-control-sm'
+        %span.input-group-append
+          %button.btn.btn-primary.btn-sm{:type => "submit"}
+            %span.fa.fa-search{"aria-hidden" => "true"}
+
+.card-group
+  .card.card-body
+    %h1
+      .fa.fa-graduation-cap
+    = Course.count
+    Online Courses
+    .row
+    Explore a variety of fresh topics
+  .card.card-body
+    %h1
+      .fa.fa-chalkboard-teacher
+    = Course.count
+    Expert Tutor
+    .row
+    Find the right tutor for you
+  .card.card-body
+    %h1
+      .fa.fa-user-graduate{:style => "color:blue"}
+    = Course.count
+    Active Learning
+    .row
+    Join the knowledged sharing community
+  .card.card-body
+    %h1
+      .fa.fa-infinity
+    = Course.count
+    Lifetime Access 
+    .row
+    Learn on your schedule     
+
+
+%hr
 %h1
-  Hello World
-  %p Find me in app/views/home/index.html.erb
+  Popular Courses
+.card-columns
+  - @courses.each do |course|
+    = render 'courses/course', course: course
+%hr
+%h2 
+  Top Rated Courses
+.card-columns
+  - @courses.each do |course|
+    = render 'courses/course', course: course
+%hr
+%h2
+  Latest Courses
+.card-columns
+  - @latest_courses.each do |course|
+    = render 'courses/course', course: course
 
-.fa.fa-flag
-.fab.fa-amazon
-
-= link_to root_path, class: 'btn btn-success' do
-  .fa.fa-home
-  Homepage
-= link_to courses_path, class: 'btn btn-success' do
-  .fa.fa-book
-  Courses
